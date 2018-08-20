@@ -1,3 +1,5 @@
+import rest from '../rest/restutils'
+
 import {
 GraphQLInt,
 GraphQLBoolean,
@@ -21,8 +23,17 @@ const MerchantType = new GraphQLObjectType({
   })
 });
 
+function fetchMerchantByURL(relativeURL) {
+  return rest.fetchResponseByURL(relativeURL).then(json => {
+    if(json) {
+      return json.merchant
+    }
+  });
+}
+
 const merchant = {
-  MerchantType
+  MerchantType,
+  fetchMerchantByURL
 }
 
 export default merchant
