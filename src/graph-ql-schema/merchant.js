@@ -1,4 +1,5 @@
 import rest from '../rest/restutils'
+import DataLoader from 'dataloader';
 
 import {
 GraphQLInt,
@@ -31,9 +32,14 @@ function fetchMerchantByURL(relativeURL) {
   });
 }
 
+const merchantLoader = new DataLoader(
+  urls => Promise.all(urls.map(fetchMerchantByURL))
+);
+
 const merchant = {
   MerchantType,
-  fetchMerchantByURL
+  // fetchMerchantByURL,
+  merchantLoader
 }
 
 export default merchant
