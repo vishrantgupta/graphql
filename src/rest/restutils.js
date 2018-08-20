@@ -7,7 +7,7 @@ function fetchResponseByURL(relativeURL) {
 
   console.log(`Fetching from ${config.MERCHANT_APP_URL}${relativeURL}`)
 
-  return fetch(`${config.MERCHANT_APP_URL}${relativeURL}`, {
+  return fetch(`https://api.myjson.com/bins/8lwqk`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
